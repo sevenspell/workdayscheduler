@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" type="text/javascript"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="./scheduler.js" type="text/javascript"></script>
+
     <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./bootstrap.css"
-
-    <!-- My own CSS-->
+    <!--My own CSS-->
     <link rel="stylesheet" type="text/css" href="./schedulerstyle.css">
 
     <!--Favicon-->
@@ -28,26 +31,49 @@
 <body>
 
     <header>
-        <div class="container" id="header">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-sm-12" id="header">
-                    <p class="h2">Work Day Scheduler</p>
+                <div class="col-sm-6 offset-sm-2" id="header">
+                    <h2 class="h2">Work Day Scheduler</h2>
                 </div>
             </div>
-
+        </div>
     </header>
 
-    <div class="row justify-content-left">
-        <div class="col-sm-8">
-            <form class="form-group">
-                <button class="btn btn-rita my-2 my-sm-0" type="submit" id="generate"
-                    onclick="generatePW(event)">Check Button</button>
-            </form>
+    <br>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-8" id="snippet">
+                <h5 class="h5">A hour-by-hour scheduler to manage your day more efficiently.</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-6 offset-sm-2" id="datetitle">
+            </div>
         </div>
     </div>
 
+    <hr id="linebreak">
 
+    <div class="container">
+        <div class="row justify-content-left" id="hourlyrow">
+            <div class="col-sm-1 offset-sm-1" id="time">
+                TimeHour
+            </div>
+            <div class="col-sm-8" id="task">
+                Enter Task
+            </div>
+            <div class="col-sm-1" id="save">
+                Save
+            </div>
+        </div>
+    </div>
 
+    <div class="form-group">
+        &nbsp;
+    </div>
+    
     <div class="form-group">
         &nbsp;
     </div>
@@ -55,11 +81,7 @@
     <div class="form-group">
         &nbsp;
     </div>
-
-    <div class="form-group">
-        &nbsp;
-    </div>
-
+    
     <!-- Footer-->
     <div class="footer">
         <div class="fixed-bottom">
@@ -67,11 +89,56 @@
         </div>
     </div>
 
-    <script src="./jquery-3.4.1.slim.min.js"></script>
-    <script src="./moment-with-locales.js"></script>
-    <script src="./scheduler.js"></script>
 
 
+
+    <!--jQuery and moment.js pseudocoding-->
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        var currentHour = moment().hour();
+      // var currentTime = moment();
+      // console.log(currentTime.hour());
+      for (var i = 9; i < 18; i++) {
+        if (i < currentHour) {
+          $('#hour-' + i).addClass('past')
+        } else if (i === currentHour) {
+          $('#hour-' + i).addClass('present')
+        } else {
+          $('#hour-' + i).addClass('future')
+        }
+      };
+        
+        //variables
+
+        //functions
+        
+        //1. initialize at start of day
+            //clear scheduler
+
+
+            //display current day and date
+
+
+        //2. build timer that holds current time in the background
+            //add colour to reflect current hour slot
+            //add colour to reflect past hour slots
+            //add colour to reflect future hour slots
+        //3. use for loop to create hourly slots
+            //create array for hours
+        //4. create textbox to allow task entries
+        //5. create save button to save textbox input to local storage
+
+
+
+
+
+
+
+    });
+
+</script>
 
 </body>
 
