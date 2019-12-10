@@ -56,24 +56,24 @@
 
     <hr id="linebreak">
 
-    <div class="container">
-        <div class="row justify-content-left" id="hourlyrow">
-            <div class="col-sm-1 offset-sm-1" id="time">
-                TimeHour
+    <div class="container" id="schedulecontainer">
+        <div class="row justify-content-left hourlyrow" id="hourlyrow">
+            <!-- <div class="col-sm-1 hour" id="hour">
+                
             </div>
-            <div class="col-sm-8" id="task">
+            <div class="col-sm-10 task" id="task">
                 Enter Task
             </div>
-            <div class="col-sm-1" id="save">
+            <div class="col-sm-1 save" id="save">
                 Save
-            </div>
+            </div> -->
         </div>
     </div>
 
     <div class="form-group">
         &nbsp;
     </div>
-    
+
     <div class="form-group">
         &nbsp;
     </div>
@@ -81,7 +81,7 @@
     <div class="form-group">
         &nbsp;
     </div>
-    
+
     <!-- Footer-->
     <div class="footer">
         <div class="fixed-bottom">
@@ -93,42 +93,68 @@
 
 
     <!--jQuery and moment.js pseudocoding-->
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function(){
+        $(document).ready(function () {
 
-        var currentHour = moment().hour();
-      // var currentTime = moment();
-      // console.log(currentTime.hour());
-      for (var i = 9; i < 18; i++) {
-        if (i < currentHour) {
-          $('#hour-' + i).addClass('past')
-        } else if (i === currentHour) {
-          $('#hour-' + i).addClass('present')
-        } else {
-          $('#hour-' + i).addClass('future')
-        }
-      };
         
         //variables
 
         //functions
-        
+        function init(){
+            $("#hour").empty();
+            $("#task").empty();
+        }
+
         //1. initialize at start of day
-            //clear scheduler
+        //clear scheduler
+        init();
+        //display current day and date
+            var dateTitle = moment().format("dddd, MMMM Do");
+            $("#datetitle").append(dateTitle);
 
+        //create array for hours
+        var hourlySlots = [moment().format('00:00'),moment().format('01:00'),moment().format('02:00'),moment().format('03:00'),moment().format('04:00'),moment().format('05:00'),moment().format('06:00'),moment().format('07:00'),moment().format('08:00'),moment().format('09:00'),moment().format('10:00'),moment().format('11:00'),moment().format('12:00'),moment().format('13:00'),moment().format('14:00'),moment().format('15:00'),moment().format('16:00'), moment().format('17:00'), moment().format('18:00'), moment().format('19:00'), moment().format('20:00'), moment().format('21:00'), moment().format('22:00'), moment().format('23:00')]
 
-            //display current day and date
+        
+        //2. build holder of current time
+        //add colour to reflect current hour slot
+        //add colour to reflect past hour slots
+        //add colour to reflect future hour slots
+            var currentHour = moment().hour();
 
-
-        //2. build timer that holds current time in the background
-            //add colour to reflect current hour slot
-            //add colour to reflect past hour slots
-            //add colour to reflect future hour slots
         //3. use for loop to create hourly slots
-            //create array for hours
-        //4. create textbox to allow task entries
-        //5. create save button to save textbox input to local storage
+            for (var i = 0; i < hourlySlots.length; i++) {
+                if (i < currentHour) {
+                    $("#hourlyrow" + i).addClass("past");
+                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
+                    $("#hourlyrow" + i).css({"border-width": "1px",
+                                    "border-color": "#B22222",
+                                    "border-style": "solid"});
+                    $("#hourlyrow").append(hourlySlots[i]);
+                } else if (i === currentHour) {
+                    $(".hourlyrow" + i).addClass("present");
+                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
+                    $("#hourlyrow" + i).css({"border-width": "1px",
+                                    "border-color": "#B22222",
+                                    "border-style": "solid"});
+                    $("#hourlyrow").append(hourlySlots[i]);
+                } else {
+                    $("#hourlyrow" + i).addClass("future");
+                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
+                    $("#hourlyrow" + i).css({"border-width": "1px",
+                                    "border-color": "#B22222",
+                                    "border-style": "solid"});
+                    $("#hourlyrow").append(hourlySlots[i]);
+                }
+            };
+
+            console.log(currentHour);
+
+
+
+            //4. create textbox to allow task entries
+            //5. create save button to save textbox input to local storage
 
 
 
@@ -136,9 +162,9 @@
 
 
 
-    });
+        });
 
-</script>
+    </script>
 
 </body>
 
