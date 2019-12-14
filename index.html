@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" type="text/javascript"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js" type="text/javascript"></script>
-    <script src="./scheduler.js" type="text/javascript"></script>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,12 +13,13 @@
     <!--My own CSS-->
     <link rel="stylesheet" type="text/css" href="./schedulerstyle.css">
 
-    <!--Favicon-->
-    <!-- <link rel="shortcut icon" href="./Assets/Images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="./Assets/Images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./Assets/Images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./Assets/Images/favicon-16x16.png">
-    <link rel="manifest" href="./Assets/Images/site.webmanifest"> -->
+    <!--Awesome Font-->
+    <script src="https://kit.fontawesome.com/c140bf22f6.js" crossorigin="anonymous"></script>
+
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" type="text/javascript"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!-- <script src="./scheduler.js" type="text/javascript"></script> -->
 
     <title>Rp's Work Day Scheduler</title>
 </head>
@@ -58,113 +54,154 @@
 
     <div class="container" id="schedulecontainer">
         <div class="row justify-content-left hourlyrow" id="hourlyrow">
-            <!-- <div class="col-sm-1 hour" id="hour">
-                
+            <!-- <div class="col-sm-1 hour" id="00hour">
+                00:00
             </div>
-            <div class="col-sm-10 task" id="task">
-                Enter Task
+            <textarea class="col-sm-10 task" id="00task" placeholder="Enter Task">
+            </textarea>
+            <div class="col-sm-1 save" id="00save">
+                <i class='far fa-save'> </i>
             </div>
-            <div class="col-sm-1 save" id="save">
-                Save
-            </div> -->
+        </div> -->
+
         </div>
-    </div>
 
-    <div class="form-group">
-        &nbsp;
-    </div>
-
-    <div class="form-group">
-        &nbsp;
-    </div>
-
-    <div class="form-group">
-        &nbsp;
-    </div>
-
-    <!-- Footer-->
-    <div class="footer">
-        <div class="fixed-bottom">
-            <p class="text-muted">Copyright &#169;</p>
+        <div class="form-group">
+            &nbsp;
         </div>
-    </div>
+
+        <div class="form-group">
+            &nbsp;
+        </div>
+
+        <div class="form-group">
+            &nbsp;
+        </div>
+
+        <!-- Footer-->
+        <div class="footer">
+            <div class="fixed-bottom">
+                <p class="text-muted">Copyright &#169;</p>
+            </div>
+        </div>
 
 
 
 
-    <!--jQuery and moment.js pseudocoding-->
-    <script type="text/javascript">
+        <!--jQuery and moment.js pseudocoding-->
+        <script type="text/javascript">
 
-        $(document).ready(function () {
-
-        
-        //variables
-
-        //functions
-        function init(){
-            $("#hour").empty();
-            $("#task").empty();
-        }
-
-        //1. initialize at start of day
-        //clear scheduler
-        init();
-        //display current day and date
-            var dateTitle = moment().format("dddd, MMMM Do");
-            $("#datetitle").append(dateTitle);
-
-        //create array for hours
-        var hourlySlots = [moment().format('00:00'),moment().format('01:00'),moment().format('02:00'),moment().format('03:00'),moment().format('04:00'),moment().format('05:00'),moment().format('06:00'),moment().format('07:00'),moment().format('08:00'),moment().format('09:00'),moment().format('10:00'),moment().format('11:00'),moment().format('12:00'),moment().format('13:00'),moment().format('14:00'),moment().format('15:00'),moment().format('16:00'), moment().format('17:00'), moment().format('18:00'), moment().format('19:00'), moment().format('20:00'), moment().format('21:00'), moment().format('22:00'), moment().format('23:00')]
-
-        
-        //2. build holder of current time
-        //add colour to reflect current hour slot
-        //add colour to reflect past hour slots
-        //add colour to reflect future hour slots
-            var currentHour = moment().hour();
-
-        //3. use for loop to create hourly slots
-            for (var i = 0; i < hourlySlots.length; i++) {
-                if (i < currentHour) {
-                    $("#hourlyrow" + i).addClass("past");
-                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
-                    $("#hourlyrow" + i).css({"border-width": "1px",
-                                    "border-color": "#B22222",
-                                    "border-style": "solid"});
-                    $("#hourlyrow").append(hourlySlots[i]);
-                } else if (i === currentHour) {
-                    $(".hourlyrow" + i).addClass("present");
-                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
-                    $("#hourlyrow" + i).css({"border-width": "1px",
-                                    "border-color": "#B22222",
-                                    "border-style": "solid"});
-                    $("#hourlyrow").append(hourlySlots[i]);
-                } else {
-                    $("#hourlyrow" + i).addClass("future");
-                    $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div class='col-sm-1 hourbox'></div> <textarea class='col-sm-10 taskbox'></textarea> <div class='col-sm-1 savebox'></div> </div></div>");
-                    $("#hourlyrow" + i).css({"border-width": "1px",
-                                    "border-color": "#B22222",
-                                    "border-style": "solid"});
-                    $("#hourlyrow").append(hourlySlots[i]);
-                }
-            };
-
-            console.log(currentHour);
+            $(document).ready(function () {
 
 
+                //variables
 
-            //4. create textbox to allow task entries
-            //5. create save button to save textbox input to local storage
+                //functions
+                function init() {
+                    $(".hourbox").empty();
+                    $(".taskbox").empty();
+                };
+
+                setInterval(function () {
+                    var minutes = (new Date()).getMinutes()
+                    if (!minutes % 15) location.reload(); // if minutes is a multiple of 15
+
+                }, 60000); // 60.000 milliseconds = 1 minute
+
+                //1. initialize at start of day
+                //clear scheduler
+                init();
+                //display current day and date
+                var dateTitle = moment().format("dddd, MMMM Do");
+                $("#datetitle").append(dateTitle);
+
+                //create array for hours
+                var hourlySlots = [moment().format('00:00') + "hrs", moment().format('01:00') + "hrs", moment().format('02:00') + "hrs", moment().format('03:00') + "hrs", moment().format('04:00') + "hrs", moment().format('05:00') + "hrs", moment().format('06:00') + "hrs", moment().format('07:00') + "hrs", moment().format('08:00') + "hrs", moment().format('09:00') + "hrs", moment().format('10:00') + "hrs", moment().format('11:00') + "hrs", moment().format('12:00') + "hrs", moment().format('13:00') + "hrs", moment().format('14:00') + "hrs", moment().format('15:00') + "hrs", moment().format('16:00') + "hrs", moment().format('17:00') + "hrs", moment().format('18:00') + "hrs", moment().format('19:00') + "hrs", moment().format('20:00') + "hrs", moment().format('21:00') + "hrs", moment().format('22:00') + "hrs", moment().format('23:00') + "hrs"]
 
 
+                //2. build holder of current time
+
+                var currentHour = moment().hour();
+
+                //3. use for loop to create hourly slots
+                //4. create textbox to allow task entries
+                for (var i = 0; i < hourlySlots.length; i++) {
+                    if (i < currentHour) {
+                        var specificId1 = "hour" + i;
+                        var specificId2 = i + "hour";
+                        var specificId3 = i;
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#" + specificId2).addClass("past");
+                        $(".past").css({ "background-color": "#cce6ff", "border-color": "whitesmoke", "border-radius": "5px" })
 
 
+                    } else if (i === currentHour) {
+                        var specificId1 = "hour" + i;
+                        var specificId2 = i + "hour";
+                        var specificId3 = i;
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#" + specificId2).addClass("present");
+                        $(".present").css({ "background-color": "#FFD700", "border-color": "orange", "border-radius": "5px" });
+
+                    } else {
+                        var specificId1 = "hour" + i;
+                        var specificId2 = i + "hour";
+                        var specificId3 = i;
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#" + specificId2).addClass("future");
+                        $(".future").css({ "background-color": "#D8BFD8", "border-color": "whitesmoke", "border-radius": "5px" });
+                    }
+                    $("#hour" + i).append(hourlySlots[i]);
+                    $(".savebox").css({ "background-color": "#F0F8FF", "border-color": "#778899", "border-radius": "5px" });
+                    $(".hourbox").css({ "background-color": "#F0F8FF", "border-color": "#778899", "border-radius": "5px", "border-color": "#404040" });
+                    $(".savebutton").css({ "background-color": "#B44", "color": "black", "border-radius": "50px" })
+
+                    //5. create save button to save textbox input to local storage
+                    $(".savebutton").on("click", function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        var userSave = $(this).attr("id");
+                        console.log(userSave);
+                        
+
+                        var userInputID = $(".taskbox").attr("id");
+                        console.log(userInputID);
 
 
+                        var userInputText = $('input[type=text], textarea');
+                        console.log(userInputText);
 
-        });
+                        if (userSave == userInputID){
+                            alert("button ID " + userSave + "matches textbox ID " + userInputID);
+                        }
+                        // var saveLocalStorage = localStorage.setItem(userInput, userInput);
+                        // console.log(saveLocalStorage);
+                        
 
-    </script>
+                        
+
+
+                        // var userTextInputEl = document.querySelectorAll(".inputTextArea")
+                        // var userSaveSelect = event.target;
+                        // var saveSelect = userSaveSelect.matches("button");
+                        // var indexSelect = userSaveSelect.getAttribute("data-index");
+                        // if (saveSelect) {
+                        //     console.log("this is what user clicked " + userSaveSelect.getAttribute("data-index"));
+                        //     userInput = userTextInputEl[indexSelect - 15].value.trim();
+                        //     console.log(userInput);
+                        //     userInputUppercase = userInput.toUpperCase();
+                        //     console.log("Current Initials are: " + userInputUppercase);
+                        //     localStorage.setItem(indexSelect - 15, userInputUppercase);
+
+                    })
+
+                };
+
+            });
+
+        </script>
+
 
 </body>
 
