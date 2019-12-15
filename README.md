@@ -24,7 +24,7 @@ https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screensho
 https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%203.png
 https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%204.png
 
-4. When the day changes ie. clock goes to the next day and date. Current active hour is midnight, and all entries are automatically cleared for the new day.
+4. When the day changes ie. clock goes to the next day and date. Current active hour is midnight, and all entries are automatically cleared for the new day. The caveat to this is that entries will not work during hour 0 ie. between 12am and 12:59am. Anytime outside of that will work as expected.
 https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%205.png
 
 5. Put in new entries for the new day, click on the corresponding save buttons and refresh the page to confirm the entries remain. (blue is for past hours, yellow is for current active hour, and purple is for future hours)
