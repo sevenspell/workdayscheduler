@@ -93,14 +93,28 @@
 
             $(document).ready(function () {
 
-
-                //variables
-
                 //functions
-                function init() {
-                    $(".hourbox").empty();
-                    $(".taskbox").empty();
-                };
+                // function init() {
+                //     if (currentHour === 0) {
+
+                //         $(".taskbox").empty();
+                //         localStorage.clear();
+
+
+                //     } else {
+                        
+                //         $("textarea").each(function (k) {
+                //             var userInput = $(this).first();
+                //             console.log(userInput);
+
+                //             userInput[k] = localStorage.getItem(k);
+                //             var displayInput = $(this).parent().children().first().next().append(userInput[k]);
+                //             console.log(displayInput);
+                //         });
+
+                //     }
+
+                // };
 
                 setInterval(function () {
                     var minutes = (new Date()).getMinutes()
@@ -110,7 +124,7 @@
 
                 //1. initialize at start of day
                 //clear scheduler
-                init();
+
                 //display current day and date
                 var dateTitle = moment().format("dddd, MMMM Do");
                 $("#datetitle").append(dateTitle);
@@ -122,6 +136,8 @@
                 //2. build holder of current time
 
                 var currentHour = moment().hour();
+                console.log(currentHour);
+
 
                 //3. use for loop to create hourly slots
                 //4. create textbox to allow task entries
@@ -130,7 +146,7 @@
                         var specificId1 = "hour" + i;
                         var specificId2 = i + "hour";
                         var specificId3 = i;
-                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton'> </i> </button> </div></div>");
                         $("#" + specificId2).addClass("past");
                         $(".past").css({ "background-color": "#cce6ff", "border-color": "whitesmoke", "border-radius": "5px" })
 
@@ -139,7 +155,7 @@
                         var specificId1 = "hour" + i;
                         var specificId2 = i + "hour";
                         var specificId3 = i;
-                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton'> </i> </button> </div></div>");
                         $("#" + specificId2).addClass("present");
                         $(".present").css({ "background-color": "#FFD700", "border-color": "orange", "border-radius": "5px" });
 
@@ -147,56 +163,59 @@
                         var specificId1 = "hour" + i;
                         var specificId2 = i + "hour";
                         var specificId3 = i;
-                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox " + specificId3 + "'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton " + specificId3 + "'> </i> </button> </div></div>");
+                        $("#hourlyrow").append("<div class='container hourboxes'> <div class='row justify-content-left hourrow'> <div id ='" + specificId1 + "' class='col-sm-1 hourbox'></div> <textarea id ='" + specificId2 + "' class='col-sm-10 taskbox'></textarea> <button class='col-sm-1 savebox'> <i id ='" + specificId3 + "' class='far fa-save savebutton'> </i> </button> </div></div>");
                         $("#" + specificId2).addClass("future");
                         $(".future").css({ "background-color": "#D8BFD8", "border-color": "whitesmoke", "border-radius": "5px" });
                     }
                     $("#hour" + i).append(hourlySlots[i]);
                     $(".savebox").css({ "background-color": "#F0F8FF", "border-color": "#778899", "border-radius": "5px" });
                     $(".hourbox").css({ "background-color": "#F0F8FF", "border-color": "#778899", "border-radius": "5px", "border-color": "#404040" });
-                    $(".savebutton").css({ "background-color": "#B44", "color": "black", "border-radius": "50px" })
-
-                    //5. create save button to save textbox input to local storage
-                    $(".savebutton").on("click", function (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        var userSave = $(this).attr("id");
-                        console.log(userSave);
-                        
-
-                        var userInputID = $(".taskbox").attr("id");
-                        console.log(userInputID);
-
-
-                        var userInputText = $('input[type=text], textarea');
-                        console.log(userInputText);
-
-                        if (userSave == userInputID){
-                            alert("button ID " + userSave + "matches textbox ID " + userInputID);
-                        }
-                        // var saveLocalStorage = localStorage.setItem(userInput, userInput);
-                        // console.log(saveLocalStorage);
-                        
-
-                        
-
-
-                        // var userTextInputEl = document.querySelectorAll(".inputTextArea")
-                        // var userSaveSelect = event.target;
-                        // var saveSelect = userSaveSelect.matches("button");
-                        // var indexSelect = userSaveSelect.getAttribute("data-index");
-                        // if (saveSelect) {
-                        //     console.log("this is what user clicked " + userSaveSelect.getAttribute("data-index"));
-                        //     userInput = userTextInputEl[indexSelect - 15].value.trim();
-                        //     console.log(userInput);
-                        //     userInputUppercase = userInput.toUpperCase();
-                        //     console.log("Current Initials are: " + userInputUppercase);
-                        //     localStorage.setItem(indexSelect - 15, userInputUppercase);
-
-                    })
+                    $(".savebutton").css({ "background-color": "#B44", "color": "black", "border-radius": "50px" });
 
                 };
+
+                //5. create save button to save textbox input to local storage
+
+                $(".savebutton").on("click", function (event) {
+                    event.preventDefault();
+
+                    var test = $(this).parent().children().attr('id');
+                    console.log(test);
+
+                    var hour = $(this).parent().children().first().attr('id');
+                    console.log(hour);
+
+                    var text = $(this).parent().prev().val();
+                    console.log(text);
+
+                    localStorage.setItem(hour, text);
+
+                    var userText = localStorage.getItem(hour);
+                    var setUserText = $(this).parent().prev().append(userText);
+                    console.log(setUserText);
+
+                });
+
+
+                //6. Display saved local storage
+
+                if(currentHour === 0){
+                    $(".taskbox").empty();
+                    localStorage.clear();
+
+                } else {
+                    $("textarea").each(function (k) {
+                    var userInput = $(this).first();
+
+                    userInput[k] = localStorage.getItem(k);
+                    var displayInput = $(this).parent().children().first().next().append(userInput[k]);
+                    console.log(displayInput);
+
+                });
+
+                }
+
+
 
             });
 
