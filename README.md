@@ -15,19 +15,20 @@ Github cloning, coding done using VS Code app.
 Go to Day Planner page (https://sevenspell.github.io/week5-assignment/).
 
 1. Start with an empty Day Planner. It shows the current day and date at the top.
-(insert screenshot 1)
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%201.png
 
 2. Blue boxes are past hours in the planner, while yellow shows the current active hour.
-(insert screenshot 2)
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%202.png
 
 3. Put in some entries according to the time and click on the red save button to the right of each entry. Try refreshing the page and confirm the entries remain.
-(insert screenshot 3 & 4)
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%203.png
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%204.png
 
 4. When the day changes ie. clock goes to the next day and date. Current active hour is midnight, and all entries are automatically cleared for the new day.
-(insert screenshot 5)
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%205.png
 
 5. Put in new entries for the new day, click on the corresponding save buttons and refresh the page to confirm the entries remain. (blue is for past hours, yellow is for current active hour, and purple is for future hours)
-(insert screenshot 6)
+https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%206.png
 
 
 ## Credits
