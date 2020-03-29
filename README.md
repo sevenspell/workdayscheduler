@@ -9,26 +9,31 @@ This is a Day Planner that would be useful for people to schedule their daily ac
 
 Github cloning, coding done using VS Code app.
 
+## Applications / Technology Used
++ HTML
++ CSS
++ jQuery
+
 
 ## Usage 
 
 Go to Day Planner page (https://sevenspell.github.io/week5-assignment/).
 
 1. Start with an empty Day Planner. It shows the current day and date at the top.
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%201.png
+<img src="screenshots/Screenshot%201.png" width= "500" >
 
 2. Blue boxes are past hours in the planner, while yellow shows the current active hour.
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%202.png
+<img src="screenshots/Screenshot%202.png" width= "500" >
 
 3. Put in some entries according to the time and click on the red save button to the right of each entry. Try refreshing the page and confirm the entries remain.
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%203.png
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%204.png
+<img src="screenshots/Screenshot%203.png" width= "500" >
+<img src="screenshots/Screenshot%204.png" width= "500" >
 
 4. When the day changes ie. clock goes to the next day and date. Current active hour is midnight, and all entries are automatically cleared for the new day. The caveat to this is that entries will not work during hour 0 ie. between 12am and 12:59am. Anytime outside of that will work as expected.
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%205.png
+<img src="screenshots/Screenshot%205.png" width= "500" >
 
 5. Put in new entries for the new day, click on the corresponding save buttons and refresh the page to confirm the entries remain. (blue is for past hours, yellow is for current active hour, and purple is for future hours)
-https://github.com/sevenspell/week5-assignment/blob/master/screenshots/Screenshot%206.png
+<img src="screenshots/Screenshot%206.png" width= "500" >
 
 
 ## Credits
