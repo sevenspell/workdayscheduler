@@ -1,5 +1,8 @@
 # week5-assignment - The Day Planner
 
++ Github link: https://github.com/sevenspell/workdayscheduler/
++ Deployed Link: https://sevenspell.github.io/workdayscheduler/
+
 ## Description 
 
 This is a Day Planner that would be useful for people to schedule their daily activities hour by hour. It allows them to save entries individually, and will remain on the page for as long as the day is active or until they clear the entry manually. It also shows by color the current active hour, as well as separating by colors the hours that have passed, and the hours that are coming up.
@@ -17,7 +20,7 @@ Github cloning, coding done using VS Code app.
 
 ## Usage 
 
-Go to Day Planner page (https://sevenspell.github.io/week5-assignment/).
+Go to Day Planner page (https://sevenspell.github.io/workdayscheduler/).
 
 1. Start with an empty Day Planner. It shows the current day and date at the top.
 <img src="screenshots/Screenshot%201.png" width= "500" >
